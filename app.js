@@ -6,10 +6,10 @@ const Nexmo = require('nexmo');
 const socketio = require('socket.io');
 
 // init vonage 
-const nexmo = new Nexmo({
-  apiKey: '5966280a',
-  apiScrete: ' HzMUjACBsNUNK2mq'
-});
+// const nexmo = new Nexmo({
+//   apiKey: '5966280a',
+//   apiScrete: ' HzMUjACBsNUNK2mq'
+// });
 
 
 
@@ -38,9 +38,9 @@ app.post('/webhooks/inbound-message', (req, res) => {
 app.post('/', (req, res) => {
   // res.send(req.body);
   // console.log(req.body);
-  const from = req.body.number;
+  const to = req.body.number;
   const text = req.body.message
-  const to = '';
+  const from = '251932433954';
   // const to = '+251920565749';
   //const text = 'message';
 
@@ -52,7 +52,7 @@ app.post('/', (req, res) => {
   });
 
   //send sms 
-  nexmo.message.sendSms('251932433954', '251932433954', 'TEXT', 
+  nexmo.message.sendSms(from, from, 'hi there', 
   (err, responseData) => {
     if (err) {
       console.log(err);
